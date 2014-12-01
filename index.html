@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>版杀辅助工具</title>
+    <link href="./themes/default/css/main.css" rel="stylesheet">
+    <link href="./themes/default/css/application.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid" id="banner-region">
+            <div class="navbar-header">
+                <a class="navbar-brand huawenxingkai" href="#">版杀辅助工具</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div id="menu-region" class="menu-region col-md-2">
+                <label>
+                    <a href="#start" class="btn btn-success btn-outline" type="button">
+                        <h4 class="kaiti"><i class="fa fa-flag"></i> &nbsp;预备开局</h4>
+                    </a>
+                </label>
+                <label>
+                    <a href="#judge" class="btn btn-danger btn-outline" type="button">
+                        <h4 class="kaiti"><i class="fa fa-calculator"></i> &nbsp;配置判定</h4>
+                    </a>
+                </label>
+                <label>
+                    <a href="#duel" class="btn btn-primary btn-outline" type="button">
+                        <h4 class="kaiti"><i class="fa fa-fighter-jet"></i> &nbsp;单挑将面</h4>
+                    </a>
+                </label>
+                <label>
+                    <a href="#rule" class="btn btn-info btn-outline" type="button">
+                        <!--<a href="#roles" class="btn btn-info btn-outline" type="button">-->
+                        <h4 class="kaiti"><i class="fa fa-book"></i> &nbsp;阅读规则</h4>
+                    </a>
+                </label>
+                <!--<label>
+                    <button id="start" class="btn btn-warning btn-outline" type="button">
+                        <h4 class="kaiti"><i class="fa fa-flag"></i>  &nbsp;开局预备</h4>
+                    </button>
+                </label>-->
+            </div>
+            <div id="main-region" class="main-region container col-md-8">
+                <p>如果你看到这条信息，说明工具发生了错误，请联系作者。</p>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/template" id="rule-tpl">
+        <ul class="nav nav-tabs" role="tablist" id="mytab">
+            <li role="presentation" class="active"><a href="#rule1" role="tab" data-toggle="tab">三国版杀</a>
+            </li>
+            <li role="presentation"><a href="#rule2" role="tab" data-toggle="tab">群雄版杀</a>
+            </li>
+            <li role="presentation"><a href="#rule3" role="tab" data-toggle="tab">战国版杀</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="rule1">三国版杀</div>
+            <div role="tabpanel" class="tab-pane" id="rule2">群雄版杀</div>
+            <div role="tabpanel" class="tab-pane" id="rule3">战国版杀</div>
+        </div>
+    </script>
+
+    <script type="text/template" id="role-list">
+        <thead>
+            <tr>
+                <th>名称</th>
+                <th>组别</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </script>
+
+    <script type="text/x-handlebars-template" id="role-list-item">
+        <td>{{name}}</td>
+        <td>
+            {{#is group "10"}}三国版杀-魏国{{/is}} {{#is group "11"}}三国版杀-蜀国{{/is}} {{#is group "12"}}三国版杀-吴国{{/is}} {{#is group "13"}}三国版杀-在野{{/is}}
+        </td>
+        <td>
+            <a href="#roles/{{group}}/{{id}}" class="btn btn-default js-show">
+                <i class="fa fa-eye"></i> 详细信息
+            </a>
+        </td>
+    </script>
+
+    <script type="text/x-handlebars-template" id="role-view">
+        {{#is name "荀彧"}}
+        <h1 class="kaiti">{{name}}</h1> {{else}}
+        <h1 class="huawenxingkai">{{name}}</h1> {{/is}}
+        <a href="#rule" class="fa fa-backward pull-right"> 回目录</a>
+        <h4 class="huawenxingkai">
+            {{#is group "10"}}三国版杀-魏国{{/is}} {{#is group "11"}}三国版杀-蜀国{{/is}} {{#is group "12"}}三国版杀-吴国{{/is}} {{#is group "13"}}三国版杀-在野{{/is}}
+        </h4>
+        <p>{{{basic}}}</p>
+        {{#each skills}} {{#is ../group "10"}}
+        <div class="panel panel-primary">{{/is}} {{#is ../group "11"}}
+            <div class="panel panel-danger">{{/is}} {{#is ../group "12"}}
+                <div class="panel panel-success">{{/is}} {{#is ../group "13"}}
+                    <div class="panel panel-default">{{/is}}
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><b>{{name}}</b>
+                            </h3>
+                        </div>
+                        <div class="panel-body">{{{content}}}</div>
+                        {{#if ../group}}</div>{{/if}} {{/each}}
+                    <p>
+                        <strong>评价：</strong>{{attr}}</p>
+                    {{#if faq}}
+                    <p>
+                        <strong>释疑：</strong> {{#ul faq}} {{{content}}} {{/ul}}
+                    </p>
+                    {{/if}} {{#if alias}}
+                    <p>
+                        <strong>存在的同名角色：</strong>
+                    </p>
+                    {{/if}}
+
+    </script>
+
+    <script type="text/template" id="missing-role-view">
+        <div class="alert alert-warning">这个角色不存在!</div>
+    </script>
+
+    <script type="text/template" id="judge-tpl">
+        <div id="number-set-region" class="container">
+            <fieldset>
+                <legend>配置判定</legend>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div>
+                            <textarea id="number-set-input" rows="5" placeholder="选项以空格间隔开"></textarea>
+                        </div>
+                        <div>
+                            <button class="btn btn-default number-set" id="number-set-btn">
+                                <i class="icon-play icon-black"></i> 生成数字
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-6" id="number-set-result">
+                    </div>
+                </div>
+                <legend>伤判</legend>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <input type="radio" id="injureRadios" name="injureRadios" value="1" checked>第一天伤判
+                            </div>
+                            <div class="col-md-3">
+                                <input type="radio" id="injureRadios" name="injureRadios" value="2">第二天伤判
+                            </div>
+                            <div class="col-md-3">
+                                <input type="radio" id="injureRadios" name="injureRadios" value="3">不可痊愈伤判
+                            </div>
+                            <div class="col-md-3">
+                                <input type="radio" id="injureRadios" name="injureRadios" value="4">不可死亡伤判
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn btn-default injure-init" id="injure-init-btn"><i class="icon-refresh icon-black"></i> 初始化伤判</button>
+                        </div>
+                        <div id="injure-input-region">
+                            <fieldset>
+                                <label>本次伤判流水号：</label>
+                                <label>
+                                    <input type="text" id="serialNumber" disabled>
+                                </label>
+                                <input type="text" id="injureInput" placeholder="请输入一个0-9的整数">
+                                <p class="helper-text">输入内容只有第一位有效。</p>
+                                <label>
+                                    <button class="btn btn-default injure-decide" id="injure-decide-btn"><i class="icon-play icon-black"></i> 开始伤判</button>
+                                </label>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="col-md-6" id="number-injure-result">
+                    </div>
+                </div>
+                <legend>随机数</legend>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div>
+                            生成一个
+                            <input id="number-start" type="text" /> 到
+                            <input id="number-end" type="text" /> 之间的随机整数。
+                            <p class="helper-text">输入小数会被简单截断，取闭区间。</p>
+                        </div>
+                        <div>
+                            <button class="btn btn-default number-random" id="number-random-btn">
+                                <i class="icon-play icon-black"></i> 生成随机数字
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-6" id="number-random-result">
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </script>
+
+    <script type="text/template" id="start-tpl">
+        <div id="start-region" class="container">
+            <fieldset>
+                <legend>预备开局</legend>
+                <p>
+                    共有
+                    <input type="text" id="role-num" size="2"> 名玩家。
+                    <button class="btn btn-default role-rows" id="role-rows-btn">点击这里调整列表长度</button>
+                </p>
+                共有
+                <input type="text" id="camp-num" size="2"> 个阵营，每个阵营的身份包括
+                <input type="text" id="occupation-list" size="50"> 。
+                <p class="helper-text">阵营数最多为6。身份不需要包含在野。不同身份以空格间隔。</p>
+                <p>
+                    <button class="btn btn-default role-num" id="role-num-btn">点击这里初始化角色列表</button>
+                    或者 手动录入角色列表
+                </p>
+            </fieldset>
+            <div id="start-input-region" class="row">
+                <div class="col-md-4">
+                    <p>ID列表</p>
+                    <textarea id="id-area" placeholder="每行输入一个" class="text" style="width:100%"></textarea>
+                </div>
+                <div class="col-md-4">
+                    <p>角色列表</p>
+                    <textarea id="id-role-area" placeholder="每行输入一个" class="text" style="width:100%"></textarea>
+                </div>
+                <div class="col-md-4">
+                    <p>
+                        <button class="btn btn-default role-random" id="role-random-btn">分配身份</button>
+                    </p>
+                </div>
+            </div>
+            <div id="start-result-region" class="row">
+                <legend>抽取结果</legend>
+                <div class="col-md-8">
+                    <table id="start-result-table" class="table table-striped"></table>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script src="./vendor/jquery.js"></script>
+    <script src="./vendor/underscore.js"></script>
+    <script src="./vendor/underscore.string.min.js"></script>
+    <script src="./vendor/backbone.js"></script>
+    <script src="./vendor/backbone.marionette.js"></script>
+    <script src="./vendor/spin.js"></script>
+    <script src="./vendor/handlebars.js"></script>
+    <script src="./vendor/swag.js"></script>
+    <script src="./vendor/bootstrap.js"></script>
+
+    <script src="./js/main.js"></script>
+    <script src="./js/entities/role.js"></script>
+    <script src="./js/entities/role_array.js"></script>
+    <script src="./js/entities/role_content.js"></script>
+    <script src="./js/apps/roles/roles_app.js"></script>
+    <script src="./js/apps/roles/list/list_view.js"></script>
+    <script src="./js/apps/roles/list/list_controller.js"></script>
+    <script src="./js/apps/roles/show/show_view.js"></script>
+    <script src="./js/apps/roles/show/show_controller.js"></script>
+    <script src="./js/apps/roles/judge/judge_view.js"></script>
+    <script src="./js/apps/roles/judge/judge_controller.js"></script>
+    <script src="./js/apps/roles/start/start_view.js"></script>
+    <script src="./js/apps/roles/start/start_controller.js"></script>
+    <script src="./js/apps/roles/rule/rule_view.js"></script>
+    <script src="./js/apps/roles/rule/rule_controller.js"></script>
+
+    <script type="text/javascript">
+    UtilManager.start();
+    </script>
+</body>
+
+</html>

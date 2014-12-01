@@ -1,0 +1,93 @@
+(function(app) {
+
+	app.module("RolesApp.Judge", function(Judge, app, Backbone, Marionette, $, _) {
+		Judge.JudgeView = Marionette.ItemView.extend({
+			template: '#judge-tpl',
+			events: {
+				"click button.number-set": "numberSet",
+				"click button.number-random": "numberRandom",
+				"click button.injure-init": "injureInit",
+				"click button.injure-decide": "injureDecide"
+			},
+
+			onShow: function() {
+				this.$("div#number-set-result").hide();
+				this.$("div#number-random-result").hide();
+				this.$("div#injure-input-region").hide();
+			},
+
+			numberSet: function() {
+				var i, j;
+			    var choices = this.$("textarea#number-set-input").val().trim().split(" ");
+			    var rs = [];
+			    var content = "";
+
+			    if (choices.length === 1) {
+			        alert("→_→ 耍我是吧，有什么好选的！");
+			        return;
+			    } else if (choices.length === 2 || choices.length === 5 || choices.length === 10) {
+			    	//0-9
+			        for (i = 0; i < 10; i++) {
+			            rs.push(choices[i % choices.length]);
+			        }
+			    } else if (choices.length === 3) {
+			    	//1-9
+			        for (i = 0; i < 9; i++) {
+			            rs.push(choices[i % 3]);
+			        }
+			    } else if (choices.length === 4) {
+			    	//1-8
+			        for (i = 0; i < 8; i++) {
+			            rs.push(choices[i % 4]);
+			        }
+			    } else {
+			    	//1-n
+			        rs = choices;
+			    }
+
+			    rs = _.shuffle(rs);
+
+			    if (choices.length === 2 || choices.length === 5 || choices.length === 10) {
+			    	// start from 0
+			    	for (i = 0; i < 10; i++) {
+			            content += (i + rs[i] + " ");
+			        }
+			    } else {
+			    	// start from 1
+			    	for (i = 0; i < rs.length; i++) {
+				        content += ((i + 1) + rs[i] + " ");
+				    }
+			    }
+			    
+			    this.$("div#number-set-result").html(content);
+			    this.$("div#number-set-result").show();
+			},
+
+			numberRandom: function() {
+				var start = parseInt(this.$("input#number-start").val());
+			    var end = parseInt(this.$("input#number-end").val());
+			    var content;
+			    if (isNaN(start) || isNaN(end)) {
+			        content = "";
+			         alert("输入的什么鬼╮(╯▽╰)╭");
+			    } else if (start > end) {
+			        content = "";
+			         alert("能分清大小吗(⊙_⊙)？");
+			    } else {
+			        content = _.random(start, end);
+			    }
+			    this.$("div#number-random-result").html(content);
+			    this.$("div#number-random-result").show();
+			},
+
+			injureInit: function() {
+				this.$("div#injure-input-region").show();
+			},
+
+			injureDecide: function() {
+
+			}
+		});
+	});
+
+})(UtilManager);
