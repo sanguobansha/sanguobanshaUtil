@@ -84,7 +84,7 @@
     <script type="text/x-handlebars-template" id="role-list-item">
         <td>{{name}}</td>
         <td>
-            {{#is group "10"}}三国版杀-魏国{{/is}} {{#is group "11"}}三国版杀-蜀国{{/is}} {{#is group "12"}}三国版杀-吴国{{/is}} {{#is group "13"}}三国版杀-在野{{/is}}
+            {{#is group "10"}}三国版杀-魏国{{/is}} {{#is group "11"}}三国版杀-蜀国{{/is}} {{#is group "12"}}三国版杀-吴国{{/is}} {{#is group "13"}}三国版杀-在野{{/is}} {{#is group "20"}}三国版杀单挑-标准{{/is}} {{#is group "21"}}三国版杀单挑-风{{/is}} {{#is group "22"}}三国版杀单挑-火{{/is}} {{#is group "23"}}三国版杀单挑-林{{/is}} {{#is group "24"}}三国版杀单挑-山{{/is}}
         </td>
         <td>
             <a href="#roles/{{group}}/{{id}}" class="btn btn-default js-show">
@@ -99,31 +99,55 @@
         <h1 class="huawenxingkai">{{name}}</h1> {{/is}}
         <a href="#rule" class="fa fa-backward pull-right"> 回目录</a>
         <h4 class="huawenxingkai">
-            {{#is group "10"}}三国版杀-魏国{{/is}} {{#is group "11"}}三国版杀-蜀国{{/is}} {{#is group "12"}}三国版杀-吴国{{/is}} {{#is group "13"}}三国版杀-在野{{/is}}
+            {{#is group "10"}}三国版杀-魏国{{/is}} 
+            {{#is group "11"}}三国版杀-蜀国{{/is}} 
+            {{#is group "12"}}三国版杀-吴国{{/is}} 
+            {{#is group "13"}}三国版杀-在野{{/is}} 
+            {{#is group "20"}}三国版杀单挑-标准{{/is}} 
+            {{#is group "21"}}三国版杀单挑-风{{/is}} 
+            {{#is group "22"}}三国版杀单挑-火{{/is}} 
+            {{#is group "23"}}三国版杀单挑-林{{/is}} 
+            {{#is group "24"}}三国版杀单挑-山{{/is}}
         </h4>
         <p>{{{basic}}}</p>
-        {{#each skills}} {{#is ../group "10"}}
-        <div class="panel panel-primary">{{/is}} {{#is ../group "11"}}
-            <div class="panel panel-danger">{{/is}} {{#is ../group "12"}}
-                <div class="panel panel-success">{{/is}} {{#is ../group "13"}}
-                    <div class="panel panel-default">{{/is}}
-                        <div class="panel-heading">
-                            <h3 class="panel-title"><b>{{name}}</b>
-                            </h3>
-                        </div>
-                        <div class="panel-body">{{{content}}}</div>
-                        {{#if ../group}}</div>{{/if}} {{/each}}
-                    <p>
-                        <strong>评价：</strong>{{attr}}</p>
-                    {{#if faq}}
-                    <p>
-                        <strong>释疑：</strong> {{#ul faq}} {{{content}}} {{/ul}}
-                    </p>
-                    {{/if}} {{#if alias}}
-                    <p>
-                        <strong>存在的同名角色：</strong>
-                    </p>
-                    {{/if}}
+        {{#each skills}}
+            {{#is ../group "10"}} <div class="panel panel-primary">{{/is}}
+            {{#is ../group "11"}} <div class="panel panel-danger">{{/is}}
+            {{#is ../group "12"}} <div class="panel panel-success">{{/is}}
+            {{#is ../group "13"}} <div class="panel panel-default">{{/is}}
+            {{#is ../group "20"}} <div class="panel panel-default">{{/is}}
+            {{#is ../group "21"}} <div class="panel panel-primary">{{/is}}
+            {{#is ../group "22"}} <div class="panel panel-danger">{{/is}}
+            {{#is ../group "23"}} <div class="panel panel-success">{{/is}}
+            {{#is ../group "24"}} <div class="panel panel-success">{{/is}}
+                <div class="panel-heading">
+                    <h3 class="panel-title"><b>{{name}}</b>
+                    </h3>
+                </div>
+                <div class="panel-body">{{{content}}}</div>
+            {{#is ../group "10"}}</div>{{/is}}
+            {{#is ../group "11"}}</div>{{/is}}
+            {{#is ../group "12"}}</div>{{/is}}
+            {{#is ../group "13"}}</div>{{/is}}
+            {{#is ../group "20"}}</div>{{/is}}
+            {{#is ../group "21"}}</div>{{/is}}
+            {{#is ../group "22"}}</div>{{/is}}
+            {{#is ../group "23"}}</div>{{/is}}
+            {{#is ../group "24"}}</div>{{/is}}
+        {{/each}}
+        <p><strong>评价：</strong>{{attr}}</p>
+        {{#if faq}}
+        <p>
+            <strong>释疑：</strong> 
+            {{#ul faq}} {{{content}}} {{/ul}}
+        </p>
+        {{/if}} 
+        {{#if alias}}
+        <p>
+            <strong>存在的同名角色：</strong> 
+            {{#ul alias}} {{{content}}} {{/ul}}
+        </p>
+        {{/if}}
 
     </script>
 
@@ -264,6 +288,7 @@
     <script src="./js/entities/role.js"></script>
     <script src="./js/entities/role_array.js"></script>
     <script src="./js/entities/role_content.js"></script>
+    <script src="./js/entities/role_content_1v1ext.js"></script>
     <script src="./js/apps/roles/roles_app.js"></script>
     <script src="./js/apps/roles/list/list_view.js"></script>
     <script src="./js/apps/roles/list/list_controller.js"></script>

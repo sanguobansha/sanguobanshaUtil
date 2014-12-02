@@ -14,7 +14,9 @@
         faq: [
         	{content: ""}
         ],
-        alias: []
+        alias: [
+            {content: ""}
+        ]
     */
 
         id: "1001",
@@ -33,7 +35,9 @@
         	{content: "曹操对" + app.roleLinkArray["1319"] + "的指认ID不视为对在野的招揽。"},
         	{content: "曹操死亡选择" + app.roleLinkArray["1002"] + "支线后，即使被【起死回生】复活成曹操，再次死亡后也不能选择" + app.roleLinkArray["1003"] + "支线。其他多支线人物选择规则同理。"}
         ],
-        alias: []
+        alias: [
+            {content: "" + app.roleLinkArray["2001"] + "（三国版杀单挑-标准）"}
+        ]
     }, {
         id: "1002",
         name: "曹丕",
@@ -1217,21 +1221,6 @@
         attr: "全评价（选择时视为三评价）",
         faq: [],
         alias: []
-    }, ]);
+    }]);
 
 })(UtilManager);
-
-	/* Role content json template.
-	{
-		id: "",
-	    name: "",
-	    group: "",
-	    basic: "",
-	    skills: [
-	    	{name: "", content: ""},
-	    ],
-	    attr: "",
-	    faq: [],
-	    alias: []
-	}, 
-	*/
