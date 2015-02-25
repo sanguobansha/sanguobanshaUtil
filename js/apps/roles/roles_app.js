@@ -9,6 +9,7 @@
                 "roles/:group": "listByGroup",
                 "roles/:group/:id": "showRole",
                 "judge": "showJudge",
+                "duel": "showDuel",
                 "start": "showStart"
             }
         });
@@ -28,6 +29,9 @@
             },
             showJudge: function() {
                 RolesApp.Judge.Controller.showJudge();
+            },
+            showDuel: function() {
+                RolesApp.Duel.Controller.showDuel();
             },
             showStart: function() {
                 RolesApp.Start.Controller.showStart();

@@ -21,6 +21,8 @@
 				} else {
 					this.$("#id-area").attr("rows", role_num);
 					this.$("#id-role-area").attr("rows", role_num);
+					this.$("#id-result-area").attr("rows", role_num);
+					this.$("#id-role-result-area").attr("rows", role_num);
 				}
 			},
 
@@ -62,16 +64,17 @@
 			roleRandom: function() {
 				var id_list = _.str.words($("#id-area").val());
 				var role_list = _.str.words($("#id-role-area").val());
-				var tableContent = "";
+				var resultContent = "";
 				if (id_list.length !== role_list.length) {
 					this.$("div#start-result-region").hide();
 					alert("ID和角色数量不符 (╯‵□′)╯︵┻━┻");
 				} else {
 					role_list = _.shuffle(role_list);
 				    for (var i = 0; i < id_list.length; i++) {
-				        tableContent = tableContent.concat("<tr>" + "<td>" + id_list[i] + "</td>" + "<td>" + role_list[i] + "</td>" + "</tr>");
+				        resultContent = resultContent.concat(role_list[i] + "\n");
 				    }
-				    this.$("table#start-result-table").html(tableContent);
+				    this.$("#id-result-area").text($("#id-area").val());
+				    this.$("#id-role-result-area").text(_.str.trim(resultContent));
 					this.$("div#start-result-region").show();
 				}
 			}

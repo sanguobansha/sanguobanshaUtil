@@ -59,7 +59,7 @@
                     }
                 }
 
-                this.$("div#number-set-result").html(content);
+                this.$("#number-set-result").text(content);
                 this.$("div#number-set-result").show();
             },
 

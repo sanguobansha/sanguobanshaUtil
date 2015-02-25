@@ -162,7 +162,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div>
-                            <textarea id="number-set-input" rows="5" placeholder="选项以空格间隔开"></textarea>
+                            <textarea id="number-set-input" rows="5" style="width:80%" placeholder="选项以空格间隔开"></textarea>
                         </div>
                         <div>
                             <button class="btn btn-default number-set" id="number-set-btn">
@@ -170,7 +170,8 @@
                             </button>
                         </div>
                     </div>
-                    <div class="col-md-6" id="number-set-result">
+                    <div class="col-md-6">
+                        <textarea id="number-set-result" rows="5" style="width:80%" disabled></textarea>
                     </div>
                 </div>
                 <legend class="padding">伤判</legend>
@@ -267,10 +268,20 @@
             </div>
             <div id="start-result-region" class="row padding">
                 <legend>抽取结果</legend>
-                <div class="col-md-8">
-                    <table id="start-result-table" class="table table-striped"></table>
+                <div class="col-md-4">
+                    <p>ID列表</p>
+                    <textarea id="id-result-area" class="text" style="width:100%" disabled></textarea>
+                </div>
+                <div class="col-md-4">
+                    <p>角色抽取结果</p>
+                    <textarea id="id-role-result-area" class="text" style="width:100%" disabled></textarea>
                 </div>
             </div>
+        </div>
+    </script>
+
+    <script type="text/template" id="duel-tpl">
+        <div>
         </div>
     </script>
 
@@ -300,6 +311,8 @@
     <script src="./js/apps/roles/start/start_controller.js"></script>
     <script src="./js/apps/roles/rule/rule_view.js"></script>
     <script src="./js/apps/roles/rule/rule_controller.js"></script>
+    <script src="./js/apps/roles/duel/duel_view.js"></script>
+    <script src="./js/apps/roles/duel/duel_controller.js"></script>
 
     <script type="text/javascript">
     UtilManager.start();
