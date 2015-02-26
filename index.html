@@ -242,10 +242,32 @@
                     <input type="text" id="role-num" size="2"> 名玩家。
                     <button class="btn btn-default role-rows" id="role-rows-btn">点击这里调整列表长度</button>
                 </p>
-                共有
-                <input type="text" id="camp-num" size="2"> 个阵营，每个阵营的身份包括
-                <input type="text" id="occupation-list" size="50"> 。
-                <p class="helper-text">阵营数最多为6。身份不需要包含在野。不同身份以空格间隔。</p>
+                <p>
+                阵营类型分别是：
+                </p>
+                <p id="camps">
+                    A: <select id="camp-a">
+                        <option value="三国版杀">三国版杀</option>
+                        <option value="群雄版杀">群雄版杀</option>
+                        <option value="战国版杀">战国版杀</option>
+                        <option value="火凤版杀">火凤版杀</option>
+                        <option value="冰火版杀">冰火版杀</option>
+                    </select>
+                    B: <select id="camp-b">
+                        <option value="三国版杀">三国版杀</option>
+                        <option value="群雄版杀">群雄版杀</option>
+                        <option value="战国版杀">战国版杀</option>
+                        <option value="火凤版杀">火凤版杀</option>
+                        <option value="冰火版杀">冰火版杀</option>
+                    </select>
+                    C: <select id="camp-c">
+                        <option value="三国版杀">三国版杀</option>
+                        <option value="群雄版杀">群雄版杀</option>
+                        <option value="战国版杀">战国版杀</option>
+                        <option value="火凤版杀">火凤版杀</option>
+                        <option value="冰火版杀">冰火版杀</option>
+                    </select>
+                </p>
                 <p>
                     <button class="btn btn-default role-num" id="role-num-btn">点击这里初始化角色列表</button>
                     或者 手动录入角色列表
@@ -268,6 +290,16 @@
             </div>
             <div id="start-result-region" class="row padding">
                 <legend>抽取结果</legend>
+                <div>
+                    A: <select id="camp-a-result">
+                    </select>
+                    B: <select id="camp-b-result">
+                    </select>
+                    C: <select id="camp-c-result">
+                    </select>
+                    <button class="btn btn-default role-replace" id="role-replace-btn">替换为角色名</button>
+                    <p class="helper-text">注：如果角色列表非机器生成，替换名字功能可能会产生错误。</p>
+                </div>
                 <div class="col-md-4">
                     <p>ID列表</p>
                     <textarea id="id-result-area" class="text" style="width:100%" disabled></textarea>
@@ -296,6 +328,7 @@
     <script src="./vendor/bootstrap.js"></script>
 
     <script src="./js/main.js"></script>
+    <script src="./js/entities/role_start.js"></script>
     <script src="./js/entities/role.js"></script>
     <script src="./js/entities/role_array.js"></script>
     <script src="./js/entities/role_content.js"></script>
