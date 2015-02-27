@@ -66,8 +66,8 @@
             },
 
             roleRandom: function() {
-                var id_list = _.str.words($("#id-area").val());
-                var role_list = _.str.words($("#id-role-area").val());
+                var id_list = $("#id-area").val().split("\n");
+                var role_list = $("#id-role-area").val().split("\n");
                 var resultContent = "";
                 if (id_list.length !== role_list.length) {
                     this.$("div#start-result-region").hide();
