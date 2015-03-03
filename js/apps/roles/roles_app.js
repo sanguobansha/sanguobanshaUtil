@@ -38,6 +38,11 @@
             }
         };
 
+        app.on("roles:start", function() {
+            app.navigate("start");
+            API.showStart();
+        });
+
         app.on("roles:list", function() {
             app.navigate("roles");
             API.listRoles();

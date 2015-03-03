@@ -24,7 +24,7 @@ var UtilManager = new Marionette.Application();
             Backbone.history.start();
 
             if (this.getCurrentRoute() === "") {
-                app.trigger("roles:list");
+                app.trigger("roles:start");
             }
         }
     });
