@@ -81,12 +81,13 @@
             },
 
             injureInit: function() {
-                var sn = [];
+                // Chars which can be confused are removed, e.g. oO0, Ll, 9gq, Vv, Uu, I1
+                var $chars = '2345678MNPQRSTWXYZabcdefhijkmnprstwxyzABCDEFGHJK';
+                var snText = "";
                 for (var i = 0; i < 10; i++) {
-                    sn[i] = i;
+                    snText += $chars.charAt(Math.floor(Math.random() * $chars.length));
                 }
-                sn = _.shuffle(sn);
-                var snText = sn.join("");
+
                 this.$("input#serialNumber").val(snText);
 
                 var injureRadio = this.$("input#injureRadios:checked").val();
