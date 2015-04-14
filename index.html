@@ -46,9 +46,15 @@
                         <h4 class="kaiti"><i class="fa fa-flag"></i>  &nbsp;开局预备</h4>
                     </button>
                 </label>-->
+                <label>
+                    <a href="#secret" class="btn btn-default btn-outline" type="button">
+                        <!--<a href="#roles" class="btn btn-info btn-outline" type="button">-->
+                        <h4 class="kaiti"><i class="fa fa-star"></i> &nbsp;神秘功能</h4>
+                    </a>
+                </label>
             </div>
             <div id="main-region" class="main-region container col-md-8">
-                <p>如果你看到这条信息，说明工具发生了错误，请联系作者。</p>
+                <p>工具载入中</p>
             </div>
         </div>
     </div>
@@ -311,6 +317,11 @@
             </div>
         </div>
     </script>
+    
+    <script type="text/template" id="secret-tpl">
+        <div id="secret-region" class="container">
+        </div>
+    </script>
 
     <script type="text/template" id="duel-tpl">
         <div>
@@ -326,11 +337,16 @@
     <script src="./vendor/handlebars.js"></script>
     <script src="./vendor/swag.js"></script>
     <script src="./vendor/bootstrap.js"></script>
+    <script type="text/javascript">
+        var returnCitySN = 0;
+    </script>
+    <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script> 
 
     <script src="./js/main.js"></script>
     <script src="./js/entities/role_start.js"></script>
     <script src="./js/entities/role.js"></script>
     <script src="./js/entities/role_array.js"></script>
+    <script src="./js/entities/skill_content.js"></script>
     <script src="./js/entities/role_content.js"></script>
     <script src="./js/entities/role_content_1v1ext.js"></script>
     <script src="./js/apps/roles/roles_app.js"></script>
@@ -346,6 +362,8 @@
     <script src="./js/apps/roles/rule/rule_controller.js"></script>
     <script src="./js/apps/roles/duel/duel_view.js"></script>
     <script src="./js/apps/roles/duel/duel_controller.js"></script>
+    <script src="./js/apps/roles/secret/secret_view.js"></script>
+    <script src="./js/apps/roles/secret/secret_controller.js"></script>
 
     <script type="text/javascript">
     UtilManager.start();
