@@ -16,7 +16,6 @@
             </div>
         </div>
     </nav>
-
     <div class="container-fluid">
         <div class="row">
             <div id="menu-region" class="menu-region col-md-2">
@@ -57,7 +56,6 @@
             </div>
         </div>
     </div>
-
     <script type="text/template" id="rule-tpl">
         <ul class="nav nav-tabs" role="tablist" id="mytab">
             <li role="presentation" class="active"><a href="#rule1" role="tab" data-toggle="tab">三国版杀</a>
@@ -73,7 +71,6 @@
             <div role="tabpanel" class="tab-pane" id="rule3">战国版杀</div>
         </div>
     </script>
-
     <script type="text/template" id="role-list">
         <thead>
             <tr>
@@ -85,7 +82,6 @@
         <tbody>
         </tbody>
     </script>
-
     <script type="text/x-handlebars-template" id="role-list-item">
         <td>{{name}}</td>
         <td>
@@ -97,7 +93,6 @@
             </a>
         </td>
     </script>
-
     <script type="text/x-handlebars-template" id="role-view">
         {{#is name "荀彧"}}
         <h1 class="kaiti">{{name}}</h1> {{else}}
@@ -115,51 +110,36 @@
             {{#is group "24"}}三国版杀单挑-山{{/is}}
         </h4>
         <p>{{{basic}}}</p>
-        {{#each skills}}
-            {{#is ../group "10"}} <div class="panel panel-primary">{{/is}}
-            {{#is ../group "11"}} <div class="panel panel-danger">{{/is}}
-            {{#is ../group "12"}} <div class="panel panel-success">{{/is}}
-            {{#is ../group "13"}} <div class="panel panel-default">{{/is}}
-            {{#is ../group "20"}} <div class="panel panel-default">{{/is}}
-            {{#is ../group "21"}} <div class="panel panel-primary">{{/is}}
-            {{#is ../group "22"}} <div class="panel panel-danger">{{/is}}
-            {{#is ../group "23"}} <div class="panel panel-success">{{/is}}
-            {{#is ../group "24"}} <div class="panel panel-success">{{/is}}
-                <div class="panel-heading">
-                    <h3 class="panel-title"><b>{{name}}</b>
+        {{#each skills}} {{#is ../group "10"}}
+        <div class="panel panel-primary">{{/is}} {{#is ../group "11"}}
+            <div class="panel panel-danger">{{/is}} {{#is ../group "12"}}
+                <div class="panel panel-success">{{/is}} {{#is ../group "13"}}
+                    <div class="panel panel-default">{{/is}} {{#is ../group "20"}}
+                        <div class="panel panel-default">{{/is}} {{#is ../group "21"}}
+                            <div class="panel panel-primary">{{/is}} {{#is ../group "22"}}
+                                <div class="panel panel-danger">{{/is}} {{#is ../group "23"}}
+                                    <div class="panel panel-success">{{/is}} {{#is ../group "24"}}
+                                        <div class="panel panel-success">{{/is}}
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title"><b>{{name}}</b>
                     </h3>
-                </div>
-                <div class="panel-body">{{{content}}}</div>
-            {{#is ../group "10"}}</div>{{/is}}
-            {{#is ../group "11"}}</div>{{/is}}
-            {{#is ../group "12"}}</div>{{/is}}
-            {{#is ../group "13"}}</div>{{/is}}
-            {{#is ../group "20"}}</div>{{/is}}
-            {{#is ../group "21"}}</div>{{/is}}
-            {{#is ../group "22"}}</div>{{/is}}
-            {{#is ../group "23"}}</div>{{/is}}
-            {{#is ../group "24"}}</div>{{/is}}
-        {{/each}}
+                                            </div>
+                                            <div class="panel-body">{{{content}}}</div>
+                                            {{#is ../group "10"}}</div>{{/is}} {{#is ../group "11"}}</div>{{/is}} {{#is ../group "12"}}</div>{{/is}} {{#is ../group "13"}}</div>{{/is}} {{#is ../group "20"}}</div>{{/is}} {{#is ../group "21"}}</div>{{/is}} {{#is ../group "22"}}</div>{{/is}} {{#is ../group "23"}}</div>{{/is}} {{#is ../group "24"}}</div>{{/is}} {{/each}}
         <p><strong>评价：</strong>{{attr}}</p>
         {{#if faq}}
         <p>
-            <strong>释疑：</strong> 
-            {{#ul faq}} {{{content}}} {{/ul}}
+            <strong>释疑：</strong> {{#ul faq}} {{{content}}} {{/ul}}
         </p>
-        {{/if}} 
-        {{#if alias}}
+        {{/if}} {{#if alias}}
         <p>
-            <strong>存在的同名角色：</strong> 
-            {{#ul alias}} {{{content}}} {{/ul}}
+            <strong>存在的同名角色：</strong> {{#ul alias}} {{{content}}} {{/ul}}
         </p>
         {{/if}}
-
     </script>
-
     <script type="text/template" id="missing-role-view">
         <div class="alert alert-warning">这个角色不存在!</div>
     </script>
-
     <script type="text/template" id="judge-tpl">
         <div id="number-set-region" class="container">
             <fieldset>
@@ -237,7 +217,6 @@
             </fieldset>
         </div>
     </script>
-
     <script type="text/template" id="start-tpl">
         <div id="start-region" class="container">
             <fieldset>
@@ -248,24 +227,27 @@
                     <button class="btn btn-default role-rows" id="role-rows-btn">点击这里调整列表长度</button>
                 </p>
                 <p>
-                阵营类型分别是：
+                    阵营类型分别是：
                 </p>
                 <p id="camps">
-                    A: <select id="camp-a">
+                    A:
+                    <select id="camp-a">
                         <option value="三国版杀">三国版杀</option>
                         <option value="群雄版杀">群雄版杀</option>
                         <option value="战国版杀">战国版杀</option>
                         <option value="火凤版杀">火凤版杀</option>
                         <option value="冰火版杀">冰火版杀</option>
                     </select>
-                    B: <select id="camp-b">
+                    B:
+                    <select id="camp-b">
                         <option value="三国版杀">三国版杀</option>
                         <option value="群雄版杀">群雄版杀</option>
                         <option value="战国版杀">战国版杀</option>
                         <option value="火凤版杀">火凤版杀</option>
                         <option value="冰火版杀">冰火版杀</option>
                     </select>
-                    C: <select id="camp-c">
+                    C:
+                    <select id="camp-c">
                         <option value="三国版杀">三国版杀</option>
                         <option value="群雄版杀">群雄版杀</option>
                         <option value="战国版杀">战国版杀</option>
@@ -296,11 +278,14 @@
             <div id="start-result-region" class="row padding">
                 <legend>抽取结果</legend>
                 <div>
-                    A: <select id="camp-a-result">
+                    A:
+                    <select id="camp-a-result">
                     </select>
-                    B: <select id="camp-b-result">
+                    B:
+                    <select id="camp-b-result">
                     </select>
-                    C: <select id="camp-c-result">
+                    C:
+                    <select id="camp-c-result">
                     </select>
                     <button class="btn btn-default role-replace" id="role-replace-btn">替换为角色名</button>
                     <p class="helper-text">注：如果角色列表非机器生成，替换名字功能可能会产生错误。</p>
@@ -316,17 +301,75 @@
             </div>
         </div>
     </script>
-    
     <script type="text/template" id="secret-tpl">
         <div id="secret-region" class="container">
         </div>
     </script>
-
     <script type="text/template" id="duel-tpl">
-        <div>
+        <div id="duel-region" class="container">
+            <fieldset>
+                <legend>单挑将面</legend>
+                <div class="row">
+                    <div class="col-md-2">
+                        <input type="radio" name="duel-choice" value="san" checked="checked" /> 三国版杀
+                    </div>
+                    <div class="col-md-2">
+                        <input type="radio" name="duel-choice" value="zhan" /> 战国版杀
+                    </div>
+                    <div class="col-md-2">
+                        <input type="radio" name="duel-choice" value="chao" disabled /> 朝代版杀
+                    </div>
+                </div>
+                <br/>
+                <div id="duel-ban">
+                    <label>BAN</label>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <input id="ban1" type="text" style="width:60px" />
+                        </div>
+                        <div class="col-md-1">
+                            <input id="ban2" type="text" style="width:60px" />
+                        </div>
+                        <div class="col-md-1">
+                            <input id="ban3" type="text" style="width:60px" />
+                        </div>
+                        <div class="col-md-1">
+                            <input id="ban4" type="text" style="width:60px" />
+                        </div>
+                        <div class="col-md-1">
+                            <input id="ban5" type="text" style="width:60px" />
+                        </div>
+                        <div class="col-md-1">
+                            <input id="ban6" type="text" style="width:60px" />
+                        </div>
+                        <div class="col-md-1">
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-primary generate-duel" id="ban-btn" action="generate">
+                                生成将面
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div id="duel-result">
+                    <label>将面</label>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <p><label>明</label></p>
+                            <div id="duel-result-light" class="btn-group" data-toggle="buttons">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <p><label>暗</label></p>
+                            <div id="duel-result-dark" class="btn-group" data-toggle="buttons">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
         </div>
     </script>
-
     <script src="./vendor/jquery.js"></script>
     <script src="./vendor/underscore.js"></script>
     <script src="./vendor/underscore.string.min.js"></script>
@@ -337,10 +380,9 @@
     <script src="./vendor/swag.js"></script>
     <script src="./vendor/bootstrap.js"></script>
     <script type="text/javascript">
-        var returnCitySN = 0;
+    var returnCitySN = 0;
     </script>
-    <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script> 
-
+    <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
     <script src="./js/main.js"></script>
     <script src="./js/entities/role_start.js"></script>
     <script src="./js/entities/role.js"></script>
@@ -363,7 +405,6 @@
     <script src="./js/apps/roles/duel/duel_controller.js"></script>
     <script src="./js/apps/roles/secret/secret_view.js"></script>
     <script src="./js/apps/roles/secret/secret_controller.js"></script>
-
     <script type="text/javascript">
     UtilManager.start();
     </script>
